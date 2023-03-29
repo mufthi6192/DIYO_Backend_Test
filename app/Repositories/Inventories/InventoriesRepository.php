@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Inventories;
 
-use App\Models\products;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -43,32 +42,23 @@ class InventoriesRepository implements InventoriesRepositoryInterface{
     public function getInventory()
     {
         try{
-            $products = products::with('product_variants')->get();
-            $data = $products->map(function($product) {
-                return array(
-                    'id' => $product->id,
-                    'name' => $product->name,
-                    'description' => $product->description,
-                    'variants' => $product->product_variants->toArray(),
-                );
-            });
+            $query = DB::table('inventories')->get();
+            if(!$query || $query->isEmpty()){
+                throw new \Exception("Inventories empty",404);
+            }else{
+                foreach ($query as $index => $val){
+                    $data [] = array(
+                        'name' => $val->name,
+                        'price' => $val->price,
+                        'amount' => $val->amount,
+                        'unit' => $val->unit,
+                    );
+                }
+
+                return $this->responseFormatter(200,"Successfully get inventories",true,$data);
+            }
         }catch (\Throwable $err){
             return $this->responseFormatter($err->getCode(),$err->getMessage(),false,null);
         }
-    }
-
-    public function getInventoryById()
-    {
-        // TODO: Implement getInventoryById() method.
-    }
-
-    public function updateInventory()
-    {
-        // TODO: Implement updateInventory() method.
-    }
-
-    public function deleteInventory()
-    {
-        // TODO: Implement deleteInventory() method.
     }
 }
