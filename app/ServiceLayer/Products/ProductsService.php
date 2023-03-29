@@ -86,7 +86,7 @@ class ProductsService implements ProductsServiceInterface{
             $countKey = $this->merchantKeyRepository->countKey($key);
 
             if(!$countKey['status']){
-                throw new \Exception('Unauthorized Access',500);
+                throw new \Exception('Unauthorized Access',400);
             }else{
                 if($countKey['data'] < 1){
                     throw new \Exception("Unauthorized Access",400);
