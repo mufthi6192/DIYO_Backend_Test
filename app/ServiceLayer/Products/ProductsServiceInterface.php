@@ -2,10 +2,10 @@
 
 namespace App\ServiceLayer\Products;
 
+use Illuminate\Http\Request;
+
 interface ProductsServiceInterface{
-    public function addProduct();
-    public function getProduct();
+    public function addProduct(Request $request);
+    public function getProduct(Request $request);
     public function getProductById();
-    public function updateProduct();
-    public function deleteProduct();
 }

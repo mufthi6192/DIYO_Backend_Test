@@ -26,3 +26,9 @@ Route::prefix('inventories')->group(function (){
    Route::get('/',[\App\Http\Controllers\Inventories\InventoryController::class,'getInventory']);
    Route::post('/add',[\App\Http\Controllers\Inventories\InventoryController::class,'addInventory']);
 });
+
+Route::prefix('products')->group(function (){
+   Route::post('add-variant',[\App\Http\Controllers\Products\ProductController::class,'addVariant']);
+   Route::get('/',[\App\Http\Controllers\Products\ProductController::class,'getProduct']);
+   Route::post('add',[\App\Http\Controllers\Products\ProductController::class,'addProduct']);
+});

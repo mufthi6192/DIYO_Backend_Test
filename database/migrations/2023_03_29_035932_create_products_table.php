@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->integer('price');
-            $table->integer('variant_id');
             $table->timestamps();
         });
     }
