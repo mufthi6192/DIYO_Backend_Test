@@ -16,6 +16,6 @@ class InventoryController extends Controller
     public function getInventory(): \Illuminate\Http\JsonResponse
     {
         $response = $this->inventoriesService->getInventory();
-        return response()->json($response,200);
+        return response()->json($response,$response['code']);
     }
 }

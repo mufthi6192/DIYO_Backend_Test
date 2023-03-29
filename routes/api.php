@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('merchant')->group(function (){
+   Route::post('add-key',[\App\Http\Controllers\MerchantKey\MerchantKeyController::class,'addKey']);
+});
+
 Route::prefix('inventories')->group(function (){
    Route::get('/',[\App\Http\Controllers\Inventories\InventoryController::class,'getInventory']);
 });

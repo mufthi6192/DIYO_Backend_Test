@@ -4,12 +4,12 @@ namespace App\ServiceLayer\Inventories;
 
 class InventoriesService implements InventoriesServiceInterface{
     protected function responseFormatter(int $code, string $message, bool $status, $data) : array{
-        return array([
+        return array(
             'code' => $code,
             'status' => $status,
             'message' => $message,
             'data' => $data
-        ]);
+        );
     }
     public function addInventory()
     {
