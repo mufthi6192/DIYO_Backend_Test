@@ -32,3 +32,8 @@ Route::prefix('products')->group(function (){
    Route::get('/',[\App\Http\Controllers\Products\ProductController::class,'getProduct']);
    Route::post('add',[\App\Http\Controllers\Products\ProductController::class,'addProduct']);
 });
+
+Route::prefix('sales')->group(function (){
+    Route::post('/insert',[\App\Http\Controllers\Sales\SalesController::class,'insertSale']);
+   Route::get('/{id}',[\App\Http\Controllers\Sales\SalesController::class,'getSalesById']);
+});
