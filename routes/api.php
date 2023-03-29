@@ -24,4 +24,5 @@ Route::prefix('merchant')->group(function (){
 
 Route::prefix('inventories')->group(function (){
    Route::get('/',[\App\Http\Controllers\Inventories\InventoryController::class,'getInventory']);
+   Route::post('/add',[\App\Http\Controllers\Inventories\InventoryController::class,'addInventory']);
 });

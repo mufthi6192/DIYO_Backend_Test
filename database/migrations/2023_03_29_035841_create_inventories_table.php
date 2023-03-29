@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('name');
             $table->integer('price');
             $table->integer('amount');
-            $table->float('unit');
+            $table->string('unit');
             $table->timestamps();
         });
     }

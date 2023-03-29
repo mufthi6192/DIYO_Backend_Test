@@ -45,7 +45,7 @@ class MerchantKeyRepository implements MerchantKeyRepositoryInterface{
             $query = DB::table('merchant_keys')
                             ->where('key','=',$key)
                             ->count();
-            if(!$query){
+            if(!$query || $query < 1){
                 throw new \Exception("Failed to count databases");
             }else{
                 return $this->responseFormatter(200,"Successfully get data",true,$query);
