@@ -93,7 +93,7 @@ class SalesService implements SalesServiceInterface{
                         if(!$insertSales['status']){
                             throw new \Exception($insertSales['message'],$insertSales['code']);
                         }else{
-                            return $this->responseFormatter(200,"Successfully insert sales data",true,$totalPrice['data']);
+                            return $this->responseFormatter(200,"Successfully insert sales data",true,null);
                         }
                     }
                 }
